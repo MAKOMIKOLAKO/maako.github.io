@@ -5,20 +5,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>maako fangajei</title>
     <style>
-      :root { --bg: #0f1724; --card: #0b1220; --text: #e6eef8; }
-      html,body { height:100%; margin:0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:var(--text); }
-      .center { min-height:100%; display:flex; align-items:center; justify-content:center; }
-      .card { background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:3.2rem 2.4rem; border-radius:12px; box-shadow: 0 6px 30px rgba(2,6,23,0.6); text-align:center; }
-      h1 { margin:0; font-size:2.4rem; letter-spacing: -0.02em; }
-      p { margin-top:0.6rem; color: #b9c6d9; }
+      :root {
+        --bg: #000000;
+        --accent: #1a237e;
+        --text: #ffffff;
+        --nav-height: 60px;
+      }
+      
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      
+      html, body {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      /* Navigation Styles */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 1rem;
+        z-index: 1000;
+        border-bottom: 2px solid var(--accent);
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      nav.hide {
+        transform: translateY(-100%);
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        padding: 0.5rem 1rem;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Content Sections */
+      main {
+        padding-top: calc(var(--nav-height) + 2rem);
+      }
+
+      .section {
+        display: flex;
+        align-items: center;
+        min-height: 80vh;
+        padding: 4rem 10%;
+        gap: 4rem;
+      }
+
+      .section:nth-child(even) {
+        flex-direction: row-reverse;
+        background: rgba(26, 35, 126, 0.05);
+      }
+
+      .content {
+        flex: 1;
+      }
+
+      .image-placeholder {
+        flex: 1;
+        aspect-ratio: 4/3;
+        background: var(--accent);
+        opacity: 0.2;
+        border-radius: 8px;
+        min-width: 300px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--accent);
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .section {
+          flex-direction: column !important;
+          padding: 3rem 5%;
+          min-height: auto;
+          gap: 2rem;
+        }
+
+        .image-placeholder {
+          width: 100%;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .nav-links a {
+          font-size: 0.8rem;
+          padding: 0.3rem 0.6rem;
+        }
+      }
     </style>
   </head>
   <body>
-    <main class="center">
-      <section class="card">
-        <h1>maako fangajei</h1>
-        <p>Personal website — more content coming soon.</p>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#work-experience">Work Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#beyond-academics">Beyond Academics</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="section">
+        <div class="content">
+          <h1>maako fangajei</h1>
+          <h2>About Me</h2>
+          <p>Welcome to my personal website. [Your about me description will go here. Share your story, passions, and what drives you.]</p>
+        </div>
+        <div class="image-placeholder"></div>
+      </section>
+
+      <section class="section">
+        <div class="content">
+          <h2>Current Work</h2>
+          <p>[Describe your current projects, research, or professional endeavors. What problems are you solving? What technologies are you working with?]</p>
+        </div>
+        <div class="image-placeholder"></div>
+      </section>
+
+      <section class="section">
+        <div class="content">
+          <h2>Future Goals</h2>
+          <p>[Share your vision for the future. What impact do you want to make? What skills are you developing? What challenges do you want to tackle?]</p>
+        </div>
+        <div class="image-placeholder"></div>
       </section>
     </main>
+
+    <script>
+      // Navigation bar hide/show on scroll
+      let lastScroll = 0;
+      const nav = document.querySelector('nav');
+      
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+          nav.classList.remove('hide');
+          return;
+        }
+        
+        if (currentScroll > lastScroll && !nav.classList.contains('hide')) {
+          // Scrolling down
+          nav.classList.add('hide');
+        } else if (currentScroll < lastScroll && nav.classList.contains('hide')) {
+          // Scrolling up
+          nav.classList.remove('hide');
+        }
+        
+        lastScroll = currentScroll;
+      });
+    </script>
   </body>
 </html>
