@@ -10,8 +10,8 @@
     <style>
       :root {
         --bg: #1A170F;
-        --accent: #1a237e;
-        --text: #ffffff;
+        --accent: #657A3E;
+        --text: #EBEAE4;
         --nav-height: 60px;
       }
       
@@ -31,8 +31,12 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        padding: 1rem;
+        /* lighter translucent background while keeping dark theme */
+        background: rgba(255, 255, 255, 0.04);
+        /* subtle blur to create depth */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 0.75rem 1rem;
         z-index: 1000;
         border-bottom: 2px solid var(--accent);
         transform: translateY(0);
@@ -43,21 +47,48 @@
         transform: translateY(-100%);
       }
 
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr; /* brand | remaining space */
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .brand {
+        /* placed in the first grid column */
+        position: relative;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700; /* bolder */
+        letter-spacing: 0.3px;
+        font-size: 1.2rem; /* larger */
+        padding-left: 0.5rem; /* slight offset from the edge */
+        transition: opacity 0.15s ease, transform 0.15s ease;
+      }
+
       .nav-links {
         display: flex;
-        justify-content: center;
         gap: 2rem;
         list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-self: center; /* center in the remaining space between brand and right edge */
       }
 
       .nav-links a {
+        font-family: 'DM Sans', inherit;
         color: var(--text);
         text-decoration: none;
-        text-transform: uppercase;
+        text-transform: none; /* remove uppercase */
         font-size: 0.9rem;
-        letter-spacing: 1px;
+        font-weight: 500; /* slightly less bold than the brand */
+        letter-spacing: 1.2px; /* increased spacing */
         padding: 0.5rem 1rem;
         position: relative;
+        transition: color 0.18s ease;
       }
 
       .nav-links a::after {
@@ -73,6 +104,11 @@
 
       .nav-links a:hover::after {
         width: 100%;
+      }
+      
+      /* subtle hover color for links */
+      .nav-links a:hover {
+        color: rgba(255,255,255,0.95);
       }
 
       /* Content Sections */
@@ -90,7 +126,8 @@
 
       .section:nth-child(even) {
         flex-direction: row-reverse;
-        background: rgba(26, 35, 126, 0.05);
+        /* uniform background: keep transparent so entire page uses --bg */
+        background: transparent;
       }
 
       .content {
@@ -144,25 +181,31 @@
         .nav-links a {
           font-size: 0.8rem;
           padding: 0.3rem 0.6rem;
+          font-weight: 500;
+          letter-spacing: 1.0px; /* maintain slightly increased spacing on mobile */
         }
       }
     </style>
   </head>
-  <body>
+  <body id="top">
     <nav>
-      <ul class="nav-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#work-experience">Work Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#beyond-academics">Beyond Academics</a></li>
-      </ul>
+      <div class="nav-inner">
+        <a class="brand" href="#top">maako fangajei</a>
+        <ul class="nav-links">
+          <li><a href="#about-me">about me</a></li>
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#work-experience">work experience</a></li>
+          <li><a href="#education">education</a></li>
+          <li><a href="#beyond-academics">beyond academics</a></li>
+        </ul>
+      </div>
     </nav>
 
     <main>
       <section class="section">
         <div class="content">
           <h1>maako fangajei</h1>
-          <h2>About Me</h2>
+          <h2>about me</h2>
           <p>Welcome to my personal website. [Your about me description will go here. Share your story, passions, and what drives you.]</p>
         </div>
         <div class="image-placeholder"></div>
@@ -170,7 +213,7 @@
 
       <section class="section">
         <div class="content">
-          <h2>Current Work</h2>
+          <h2>current work</h2>
           <p>[Describe your current projects, research, or professional endeavors. What problems are you solving? What technologies are you working with?]</p>
         </div>
         <div class="image-placeholder"></div>
@@ -178,7 +221,7 @@
 
       <section class="section">
         <div class="content">
-          <h2>Future Goals</h2>
+          <h2>future plans</h2>
           <p>[Share your vision for the future. What impact do you want to make? What skills are you developing? What challenges do you want to tackle?]</p>
         </div>
         <div class="image-placeholder"></div>
