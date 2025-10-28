@@ -13,6 +13,7 @@
         --accent: #657A3E;
         --text: #EBEAE4;
         --muted: rgba(235,234,228,0.8);
+        --logo-size: 64px;
       }
 
       * { box-sizing: border-box; margin:0; padding:0; }
@@ -118,9 +119,14 @@
         box-shadow: 0 8px 30px rgba(0,0,0,0.45);
       }
 
-      .exp-head{ display:flex; align-items:baseline; gap:1rem; justify-content:space-between; flex-wrap:wrap; }
-      .employer{ font-weight:700; color:var(--text); font-size:1.05rem; }
-      .role{ font-weight:600; color:var(--muted); }
+  .exp-head{ display:flex; align-items:baseline; gap:1rem; justify-content:space-between; flex-wrap:wrap; }
+  /* employer block contains optional logo and text */
+  .employer-block{ display:flex; align-items:center; gap:1rem; }
+  .logo { width:var(--logo-size); height:var(--logo-size); border-radius:8px; overflow:hidden; background: rgba(101,122,62,0.06); flex:0 0 var(--logo-size); display:flex; align-items:center; justify-content:center; }
+  /* Keep the full logo visible and scale it down to fit the box without cropping */
+  .logo img{ width:100%; height:100%; object-fit:contain; object-position:center center; display:block; }
+  .employer{ font-weight:700; color:var(--text); font-size:1.05rem; }
+  .role{ font-weight:600; color:var(--muted); }
 
       .exp-desc{ margin:0.75rem 0 1rem; color:var(--text); opacity:0.95; }
 
@@ -153,7 +159,7 @@
     <main>
       <div class="page-title">
         <h1>Work Experience</h1>
-        <div class="page-sub">Roles and contributions — each entry has employer, role, description and key contributions.</div>
+        <div class="page-sub"></div>
       </div>
 
       <section class="exp-list">
@@ -161,13 +167,16 @@
         <!-- Example entry 3 (placeholder) -->
         <article class="exp-box">
           <div class="exp-head">
-            <div>
-              <div class="employer">NASA STEM Enhancement in Earth Science</div>
-              <div class="role">Intern</div>
+              <div class="employer-block">
+                <div class="logo"><img src="assets/company_logos/NASA_logo.svg.png" alt="NASA logo placeholder" loading="lazy"></div>
+                <div>
+                  <div class="employer">NASA STEM Enhancement in Earth Science</div>
+                  <div class="role">Intern</div>
+                </div>
+              </div>
+              <div class="dates" style="color:var(--muted)">May - Aug 2024</div>
             </div>
-            <div class="dates" style="color:var(--muted)">May - Aug 2024</div>
-          </div>
-          <p class="exp-desc">ADD DESC</p>
+          <p class="exp-desc">In 2024, I applied to the NASA STEM Enhancement in Earth Science program and was accepted to the Earth Systems Explorers group as part of the top 10% of applicants to the program. With my group, I explored how we could apply machine learning techniques in conjunction with land cover data to predict land surface temperature, and thus improve our understanding of urban heat islands (UHI) in the United States and abroad.</p>
           <ul class="exp-points">
             <li>Engineered XGBoost ML model predicting land surface temperature from multispectral land cover data.</li>
             <li>Applied regularization and feature engineering to reduce overfitting, improving model generalization.</li>
@@ -179,13 +188,16 @@
         <!-- Example entry 2 -->
         <article class="exp-box">
           <div class="exp-head">
-            <div>
-              <div class="employer">Laboratory of Artificial Chemical Intelligence @ EPFL</div>
-              <div class="role">Research Intern</div>
+            <div class="employer-block">
+              <div class="logo"><img src="assets/company_logos/logo-epfl.png" alt="EPFL logo placeholder" loading="lazy"></div>
+              <div>
+                <div class="employer">Laboratory of Artificial Chemical Intelligence @ EPFL</div>
+                <div class="role">Research Intern</div>
+              </div>
             </div>
             <div class="dates" style="color:var(--muted)">Feb 2024</div>
           </div>
-          <p class="exp-desc">ADD DESC</p>
+          <p class="exp-desc">In 2024, I was selected to represent my school in the "Science & Jeunesse" research program, where I was mentored by a PhD candidate in the Laboratory of Artificial Chemical Intelligence (LIAC) to pursue a mini-research project of my own. I learned about the principles of machine learning, and my learnings throughout the week culminated in the development of a Random Forest machine learning model created to predict the oxidation states of transition metals when used as catalysts in a specific reaction. The aim was to reach a level of accuracy where time-consuming, expensive wet lab tests could be replaced by computational models that could give insight into the behavior and characteristics of metals that may be promising for a given reaction.</p>
           <ul class="exp-points">
             <li>Collaborated with PhD researcher to design an ML model predicting the oxidation states of transition metal catalysts using chemical structure data.</li>
             <li>Applied supervised learning techniques to large chemistry datasets, employing feature extraction methods for improved model performance.</li>
@@ -196,13 +208,16 @@
         <!-- Example entry 1 -->
         <article class="exp-box">
           <div class="exp-head">
-            <div>
-              <div class="employer">OddersLab</div>
-              <div class="role">Marketing Intern</div>
+            <div class="employer-block">
+              <div class="logo"><img src="assets/company_logos/odderslab.jpg" alt="OddersLab logo placeholder" loading="lazy"></div>
+              <div>
+                <div class="employer">OddersLab</div>
+                <div class="role">Marketing Intern</div>
+              </div>
             </div>
             <div class="dates" style="color:var(--muted)">Jan 2024 — Apr 2024</div>
           </div>
-          <p class="exp-desc">ADD DESC</p>
+          <p class="exp-desc">I interned with the marketing department of OddersLab, a virtual reality experience developer. We investigated one of OddersLab's main target market demographics of interest, and developed engagement strategies to both improve reach and retention specifically for their Les Mills experience. We presented our findings back to the department and were ultimately selected as the best intern group of that session. </p>
           <ul class="exp-points">
             <li>Conducted target market research for the OddersLab Les Mills XR Dance experience</li>
             <li>Developed optimal engagement strategy to promote Les Mills Dance experience</li>
@@ -213,9 +228,12 @@
         <!-- Example entry 3 (placeholder) -->
         <article class="exp-box">
           <div class="exp-head">
-            <div>
-              <div class="employer">Your Next Employer</div>
-              <div class="role">Role Title</div>
+            <div class="employer-block">
+              <div class="logo"><img src="assets/placeholder.svg" alt="Employer logo placeholder" loading="lazy"></div>
+              <div>
+                <div class="employer">Your Next Employer</div>
+                <div class="role">Role Title</div>
+              </div>
             </div>
             <div class="dates" style="color:var(--muted)">Dates</div>
           </div>
