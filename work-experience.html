@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Work Experience — Maako Fangajei</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #1A170F;
+        --accent: #657A3E;
+        --text: #EBEAE4;
+        --muted: rgba(235,234,228,0.8);
+      }
+
+      * { box-sizing: border-box; margin:0; padding:0; }
+      html,body { height:100%; background:var(--bg); color:var(--text); font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        /* lighter translucent background while keeping dark theme */
+        background: rgba(255, 255, 255, 0.04);
+        /* subtle blur to create depth */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 0.75rem 1rem;
+        z-index: 1000;
+        border-bottom: 2px solid var(--accent);
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      nav.hide {
+        transform: translateY(-100%);
+      }
+
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr; /* brand | remaining space */
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .brand {
+        /* placed in the first grid column */
+        position: relative;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700; /* bolder */
+        letter-spacing: 0.3px;
+        font-size: 1.2rem; /* larger */
+        padding-left: 0.5rem; /* slight offset from the edge */
+        transition: opacity 0.15s ease, transform 0.15s ease;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-self: center; /* center in the remaining space between brand and right edge */
+      }
+
+      .nav-links a {
+        font-family: 'DM Sans', inherit;
+        color: var(--text);
+        text-decoration: none;
+        text-transform: none; /* remove uppercase */
+        font-size: 0.9rem;
+        font-weight: 500; /* slightly less bold than the brand */
+        letter-spacing: 1.2px; /* increased spacing */
+        padding: 0.5rem 1rem;
+        position: relative;
+        transition: color 0.18s ease;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      
+      /* subtle hover color for links */
+      .nav-links a:hover {
+        color: rgba(255,255,255,0.95);
+      }
+
+      main{ max-width:1200px; margin: calc(60px + 2rem) auto; padding: 2rem 4%; }
+
+      .page-title{ margin:1rem 0 2rem; }
+      .page-title h1{ font-size:2rem; color:var(--text); }
+      .page-sub{ color:var(--muted); margin-top:0.5rem; }
+
+      .exp-list{ display:grid; gap:1.6rem; }
+
+      .exp-box{
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.03);
+        padding:1.6rem;
+        border-radius:10px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+      }
+
+      .exp-head{ display:flex; align-items:baseline; gap:1rem; justify-content:space-between; flex-wrap:wrap; }
+      .employer{ font-weight:700; color:var(--text); font-size:1.05rem; }
+      .role{ font-weight:600; color:var(--muted); }
+
+      .exp-desc{ margin:0.75rem 0 1rem; color:var(--text); opacity:0.95; }
+
+      .exp-points{ margin-left:1rem; color:var(--muted); }
+      .exp-points li{ margin:0.45rem 0; }
+
+      /* small screens */
+      @media (max-width:768px){
+        .nav-links{ gap:1rem; }
+        .page-title h1{ font-size:1.6rem; }
+        .exp-head{ flex-direction:column; align-items:flex-start; gap:0.4rem; }
+      }
+    </style>
+  </head>
+    <body id="top">
+    <nav>
+      <div class="nav-inner">
+        <a class="brand" href="index.html#top">maako fangajei</a>
+        <ul class="nav-links">
+          <li><a href="about-me.html">about me</a></li>
+          <li><a href="index.html#projects">projects</a></li>
+          <li><a href="work-experience.html">work experience</a></li>
+          <li><a href="education.html">education</a></li>
+          <li><a href="beyond-academics.html">beyond academics</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="page-title">
+        <h1>Work Experience</h1>
+        <div class="page-sub">Roles and contributions — each entry has employer, role, description and key contributions.</div>
+      </div>
+
+      <section class="exp-list">
+        <!-- Example entry 1 -->
+        <article class="exp-box">
+          <div class="exp-head">
+            <div>
+              <div class="employer">ExampleCorp</div>
+              <div class="role">Senior Software Engineer</div>
+            </div>
+            <div class="dates" style="color:var(--muted)">Jan 2022 — Present</div>
+          </div>
+          <p class="exp-desc">Worked on backend services, platform reliability, and developer tooling to improve velocity and uptime.</p>
+          <ul class="exp-points">
+            <li>Led migration of monolith to microservices, reducing deploy time by 40%.</li>
+            <li>Designed observability dashboards and SLOs that improved incident response.</li>
+            <li>Mentored junior engineers and ran architecture reviews.</li>
+          </ul>
+        </article>
+
+        <!-- Example entry 2 -->
+        <article class="exp-box">
+          <div class="exp-head">
+            <div>
+              <div class="employer">Open Research Lab</div>
+              <div class="role">Research Engineer</div>
+            </div>
+            <div class="dates" style="color:var(--muted)">Sep 2019 — Dec 2021</div>
+          </div>
+          <p class="exp-desc">Implemented prototypes and experiments at the intersection of ML and systems engineering.</p>
+          <ul class="exp-points">
+            <li>Built data pipelines to support model training and evaluation at scale.</li>
+            <li>Published experiments and open-sourced reproducible tooling.</li>
+          </ul>
+        </article>
+
+        <!-- Example entry 3 (placeholder) -->
+        <article class="exp-box">
+          <div class="exp-head">
+            <div>
+              <div class="employer">Your Next Employer</div>
+              <div class="role">Role Title</div>
+            </div>
+            <div class="dates" style="color:var(--muted)">Dates</div>
+          </div>
+          <p class="exp-desc">Short description of the role and responsibilities.</p>
+          <ul class="exp-points">
+            <li>Contribution or achievement 1</li>
+            <li>Contribution or achievement 2</li>
+          </ul>
+        </article>
+
+      </section>
+    </main>
+
+  </body>
+</html>

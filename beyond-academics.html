@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beyond Academics — Maako Fangajei</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #1A170F;
+        --accent: #657A3E;
+        --text: #EBEAE4;
+        --muted: rgba(235,234,228,0.82);
+        --nav-height: 60px;
+      }
+
+      * { box-sizing: border-box; margin:0; padding:0; }
+      html { 
+        height: 100%;
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+      }
+      body { 
+        min-height: 100%;
+        background:var(--bg);
+        color:var(--text);
+        font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        overflow-x: hidden;
+      }
+
+      /* Matching navbar */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 0.75rem 1rem;
+        z-index: 1000;
+        border-bottom: 2px solid var(--accent);
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      nav.hide { transform: translateY(-100%); }
+
+      .nav-inner { max-width: 1200px; margin: 0 auto; position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 1rem; }
+      .brand { position: relative; color: var(--accent); text-decoration: none; font-weight: 700; letter-spacing: 0.3px; font-size: 1.2rem; padding-left: 0.5rem; }
+      .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; justify-self: center; }
+      .nav-links a { font-family: 'DM Sans', inherit; color: var(--text); text-decoration: none; text-transform: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 1.2px; padding: 0.5rem 1rem; position: relative; transition: color 0.18s ease; }
+      .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+      .nav-links a:hover::after { width: 100%; }
+      .nav-links a:hover { color: rgba(255,255,255,0.95); }
+
+      main {
+        padding-top: var(--nav-height);
+        min-height: 100vh;
+      }
+
+      .page-title {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        padding: 2rem 4%;
+        background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+        z-index: 2;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+      .page-title.hidden {
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+      }
+      .page-title h1 { font-size: 2rem; color: var(--text); }
+      .page-sub { color: var(--muted); margin-top: 0.45rem; }
+
+      /* Hobby/Activity Cards */
+      .hobbies-grid { 
+        position: relative;
+      }
+
+      .hobby-card {
+        min-height: 100vh;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.03);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hobby-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: calc(var(--nav-height) + 8rem) 4% 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: 100vh;
+        align-items: center;
+      }
+
+      .hobby-text {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideIn 0.8s ease-out 0.3s forwards;
+      }
+
+      .hobby-text h2 {
+        color: var(--accent);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hobby-text p {
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .hobby-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        opacity: 0;
+        transform: translateX(20px);
+        animation: slideIn 0.8s ease-out 0.5s forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(var(--slide-distance, 20px));
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .image-placeholder {
+        aspect-ratio: 4/3;
+        background: rgba(101, 122, 62, 0.1);
+        border: 2px solid var(--accent);
+        border-radius: 12px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .image-placeholder:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
+
+      .image-placeholder {
+        justify-content: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+        justify-content: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .hobby-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding-top: calc(var(--nav-height) + 10rem);
+        }
+        .hobby-text h2 {
+          font-size: 2rem;
+        }
+        .hobby-text {
+          --slide-distance: -20px;
+        }
+        .hobby-gallery {
+          --slide-distance: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hobby-content {
+          padding-top: calc(var(--nav-height) + 8rem);
+        }
+        .hobby-gallery {
+          grid-template-columns: 1fr;
+        }
+        .page-title h1 { 
+          font-size: 1.6rem; 
+        }
+        .hobby-text h2 {
+          font-size: 1.8rem;
+        }
+        .hobby-text p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <nav>
+      <div class="nav-inner">
+        <a class="brand" href="index.html#top">maako fangajei</a>
+        <ul class="nav-links">
+          <li><a href="about-me.html">about me</a></li>
+          <li><a href="index.html#projects">projects</a></li>
+          <li><a href="work-experience.html">work experience</a></li>
+          <li><a href="education.html">education</a></li>
+          <li><a href="beyond-academics.html">beyond academics</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="page-title">
+        <h1>Beyond Academics</h1>
+        <div class="page-sub">Activities, hobbies, and interests outside of my academic pursuits.</div>
+      </div>
+
+      <section class="hobbies-grid">
+        <!-- Example Activity 1 -->
+        <article class="hobby-card">
+          <div class="hobby-content">
+            <div class="hobby-text">
+              <h2>Activity Name</h2>
+              <p>[Describe your involvement, achievements, and what this activity means to you. What skills have you developed? What impact have you made? What motivates you to participate?]</p>
+              <p>[Additional context about your role, interesting experiences, or future goals in this area.]</p>
+            </div>
+            <div class="hobby-gallery">
+              <div class="image-placeholder">Image 1</div>
+              <div class="image-placeholder">Image 2</div>
+              <div class="image-placeholder">Image 3</div>
+              <div class="image-placeholder">Image 4</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Example Activity 2 -->
+        <article class="hobby-card">
+          <div class="hobby-content">
+            <div class="hobby-text">
+              <h2>Activity Name</h2>
+              <p>[Description of your involvement and passion for this activity. What drew you to it? What keeps you engaged?]</p>
+              <p>[Share specific moments, achievements, or ongoing projects in this area.]</p>
+            </div>
+            <div class="hobby-gallery">
+              <div class="image-placeholder">Image 1</div>
+              <div class="image-placeholder">Image 2</div>
+              <div class="image-placeholder">Image 3</div>
+              <div class="image-placeholder">Image 4</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Add more hobby-card articles as needed -->
+
+      </section>
+    </main>
+
+    <script>
+      // Handle page title visibility on scroll
+      const pageTitle = document.querySelector('.page-title');
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      function updatePageTitle() {
+        // Show title when at the top, hide when scrolling down
+        if (window.scrollY > 100) {
+          pageTitle.classList.add('hidden');
+        } else {
+          pageTitle.classList.remove('hidden');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updatePageTitle();
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    </script>
+  </body>
+</html>
