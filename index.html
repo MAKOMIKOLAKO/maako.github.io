@@ -134,13 +134,24 @@
         flex: 1;
       }
 
-      .image-placeholder {
+      .image-container {
         flex: 1;
-        aspect-ratio: 4/3;
-        background: rgba(26, 35, 126, 0.1);
-        border: 2px solid var(--accent);
-        border-radius: 8px;
         min-width: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .image-container:hover img {
+        transform: scale(1.03);
       }
 
       h1 {
@@ -193,9 +204,10 @@
         <a class="brand" href="#top">maako fangajei</a>
         <ul class="nav-links">
           <li><a href="about-me.html">about me</a></li>
-          <li><a href="#projects">projects</a></li>
+          <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
           <li><a href="education.html">education</a></li>
+          <li><a href="leadership.html">leadership</a></li>
           <li><a href="beyond-academics.html">beyond academics</a></li>
         </ul>
       </div>
@@ -206,18 +218,22 @@
         <div class="content">
           <h1>maako fangajei</h1>
           <h2>about me</h2>
-          <p>I’m Maako Fangajei, an electrical engineering student at Georgia Tech with interests spanning sensing, signal processing, and robotics—especially where technology meets human impact. My work and studies explore how engineering can inform public policy and law, from biomedical innovation to equitable tech regulation. I’m also drawn to interdisciplinary problem-solving, whether it’s designing circuits, building with my team in the makerspace, or debating in mock trial. Growing up between the U.S., Switzerland, and Ghana has shaped how I think about community and responsibility—values I carry into everything I build and pursue.</p>
+          <p>I'm Maako Fangajei, an electrical engineering student at Georgia Tech with interests spanning sensing, signal processing, and robotics—especially where technology meets human impact. My work and studies explore how engineering can inform public policy and law, from biomedical innovation to equitable tech regulation. I'm also drawn to interdisciplinary problem-solving, whether it's designing circuits, building with my team in the makerspace, or debating in mock trial. Growing up between the U.S., Switzerland, and Ghana has shaped how I think about community and responsibility—values I carry into everything I build and pursue.</p>
         </div>
-        <div class="image-placeholder"></div>
+        <div class="image-container">
+          <img src="assets/buzz_headshot.jpg" alt="Maako Fangajei headshot" loading="lazy">
+        </div>
       </section>
 
       <section class="section">
         <div class="content">
           <h2>current work</h2>
-          <p>I’m currently involved as an undergraduate research assistant in the Inan Research Lab, assisting with the development of a novel non-invasive wearable closed-loop device to detect and tackle psychological stress in individuals with central nervous system disorders like PTSD. Moreover, I analyse policy as part of the Maternal Mortality focus group within the student-led Science & Technology Policy Connections group at Georgia Tech. Finally, I serve as philanthropy chair for my Associate Member class in the Delta Chi Fraternity at Georgia Tech.
+          <p>I'm currently involved as an undergraduate research assistant in the Inan Research Lab, assisting with the development of a novel non-invasive wearable closed-loop device to detect and tackle psychological stress in individuals with central nervous system disorders like PTSD. Moreover, I analyse policy as part of the Maternal Mortality focus group within the student-led Science & Technology Policy Connections group at Georgia Tech. Finally, I serve as philanthropy chair for my Associate Member class in the Delta Chi Fraternity at Georgia Tech.
 </p>
         </div>
-        <div class="image-placeholder"></div>
+        <div class="image-container">
+          <img src="assets/alaska.jpg" alt="Alaska landscape" loading="lazy">
+        </div>
       </section>
 
       <section class="section">
@@ -225,7 +241,9 @@
           <h2>future plans</h2>
           <p>[Share your vision for the future. What impact do you want to make? What skills are you developing? What challenges do you want to tackle?]</p>
         </div>
-        <div class="image-placeholder"></div>
+        <div class="image-container">
+          <img src="assets/alaska2.jpg" alt="Another beautiful Alaska scene" loading="lazy">
+        </div>
       </section>
     </main>
 
