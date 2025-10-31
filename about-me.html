@@ -221,6 +221,17 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       }
 
+      .timeline-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .timeline-image img.object-top {
+        object-position: 50% -70px;
+      }
+
       /* Year indicator */
       .year-indicator {
         position: absolute;
@@ -286,7 +297,7 @@
   <body>
     <nav>
       <div class="nav-inner">
-        <a class="brand" href="index.html#top">maako fangajei</a>
+        <a class="brand" href="/#top">maako fangajei</a>
         <ul class="nav-links">
           <li><a href="about-me.html">about me</a></li>
           <li><a href="projects.html">projects</a></li>
@@ -309,68 +320,86 @@
         <div class="timeline-content">
           <div class="timeline-text">
             <h2>Early Life</h2>
-            <p>[Share the story of your early years. What shaped you? What were your first passions? What experiences defined your childhood?]</p>
-            <p>[Talk about your family, your hometown, or any significant early memories that influenced who you are today.]</p>
+            <p>I was born in Bowling Green, Ohio to Ghanaian parents. I spent five years there with my two little brothers, and finished kindergarten before moving to New Jersey in 2012. </p>
+            <p>I grew up loving sports! I played football, basketball, and tennis growing and was always a competitive student and athlete. </p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image">Childhood Photo 1</div>
-            <div class="timeline-image">Childhood Photo 2</div>
-            <div class="timeline-image">Childhood Photo 3</div>
-            <div class="timeline-image">Childhood Photo 4</div>
+            <div class="timeline-image"><img src="/assets/about_me/baby1.jpg" alt="Early Life 1"></div>
+            <div class="timeline-image"><img src="/assets/about_me/baby2.jpg" alt="Early Life 2"></div>
+            <div class="timeline-image"><img src="/assets/about_me/baby3.jpg" alt="Early Life 3"></div>
+            <div class="timeline-image"><img src="/assets/about_me/baby4.jpg" alt="Early Life 4"></div>
+          </div> 
+        </div>
+      </section>
+
+      <section class="timeline-section" id="transition">
+        <div class="year-indicator top">Transition</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-text">
+            <h2>Transition</h2>
+            <p>[Describe a pivotal transition period. What changed? What challenges did you overcome?]</p>
+            <p>[Highlight decisions, moves, or moments that bridged your early life and high school.]</p>
+          </div>
+          <div class="timeline-media">
+            <div class="timeline-image"><img src="/assets/about_me/mid1.jpg" alt="Transition 1"></div>
+            <div class="timeline-image"><img src="/assets/about_me/mid2.jpg" alt="Transition 2"></div>
+            <div class="timeline-image"><img src="/assets/about_me/mid3.jpg" alt="Transition 3"></div>
+            <div class="timeline-image"><img src="/assets/about_me/mid4.jpg" alt="Transition 4"></div>
           </div>
         </div>
       </section>
 
-      <section class="timeline-section" id="school-years">
-        <div class="year-indicator top">School Years</div>
+      <section class="timeline-section" id="high-school">
+        <div class="year-indicator top">High School</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-text">
-            <h2>School Years</h2>
-            <p>[Describe your school experiences. What subjects captivated you? What activities were you involved in? What achievements are you proud of?]</p>
-            <p>[Share stories about friends, teachers, or moments that helped shape your academic journey.]</p>
+            <h2>High School</h2>
+            <p>[Share your high school experiences. What subjects or clubs defined you? Any notable achievements?]</p>
+            <p>[Mention mentors, friends, and key moments that shaped your path.]</p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image">School Photo 1</div>
-            <div class="timeline-image">School Photo 2</div>
-            <div class="timeline-image">School Photo 3</div>
-            <div class="timeline-image">School Photo 4</div>
+            <div class="timeline-image"><img src="/assets/about_me/high1.jpg" alt="High School 1"></div>
+            <div class="timeline-image"><img src="/assets/about_me/high2.jpg" alt="High School 2"></div>
+            <div class="timeline-image"><img src="/assets/about_me/high3.jpg" alt="High School 3"></div>
+            <div class="timeline-image"><img class="object-top" src="/assets/about_me/high4.jpg" alt="High School 4"></div>
           </div>
         </div>
       </section>
 
-      <section class="timeline-section" id="present">
-        <div class="year-indicator top">Present Day</div>
+      <section class="timeline-section" id="now">
+        <div class="year-indicator top">Now</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-text">
-            <h2>Present Day</h2>
+            <h2>Now</h2>
             <p>[Talk about where you are now. What are you passionate about? What are your current goals and aspirations?]</p>
             <p>[Share your current interests, projects, or what excites you about the future.]</p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image">Recent Photo 1</div>
-            <div class="timeline-image">Recent Photo 2</div>
-            <div class="timeline-image">Recent Photo 3</div>
-            <div class="timeline-image">Recent Photo 4</div>
+            <div class="timeline-image"><img src="/assets/about_me/now1.JPG" alt="Now 1"></div>
+            <div class="timeline-image"><img src="/assets/about_me/now2.JPG" alt="Now 2"></div>
+            <div class="timeline-image"><img src="/assets/about_me/now3.JPG" alt="Now 3"></div>
+            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Now+4" alt="Now 4"></div>
           </div>
         </div>
       </section>
 
       <section class="timeline-section" id="future">
-        <div class="year-indicator bottom">Future Goals</div>
+        <div class="year-indicator bottom">Future</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-text">
-            <h2>Future Goals</h2>
+            <h2>Future</h2>
             <p>[Share your vision for the future. What do you want to achieve? What impact do you want to make?]</p>
             <p>[Describe your dreams, ambitions, and the mark you hope to leave on the world.]</p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image">Vision Board 1</div>
-            <div class="timeline-image">Vision Board 2</div>
-            <div class="timeline-image">Vision Board 3</div>
-            <div class="timeline-image">Vision Board 4</div>
+            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+1" alt="Future 1"></div>
+            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+2" alt="Future 2"></div>
+            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+3" alt="Future 3"></div>
+            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+4" alt="Future 4"></div>
           </div>
         </div>
       </section>

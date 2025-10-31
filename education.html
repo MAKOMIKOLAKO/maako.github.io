@@ -14,6 +14,7 @@
         --text: #EBEAE4;
         --muted: rgba(235,234,228,0.82);
         --nav-height: 60px;
+        --logo-size: 64px;
       }
 
       * { box-sizing: border-box; margin:0; padding:0; }
@@ -55,6 +56,10 @@
       .edu-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 1.4rem; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
 
       .edu-head { display:flex; gap: 1rem; align-items:baseline; justify-content:space-between; flex-wrap:wrap; }
+      /* school logo container matches work experience style */
+      .school-block { display:flex; align-items:center; gap:1rem; }
+      .logo { width:var(--logo-size); height:var(--logo-size); border-radius:8px; overflow:hidden; background:rgba(101,122,62,0.06); flex:0 0 var(--logo-size); display:flex; align-items:center; justify-content:center; }
+      .logo img { width:100%; height:100%; object-fit:contain; object-position:center center; display:block; }
       .inst { font-weight:700; font-size:1.05rem; color:var(--text); }
       .degree { font-weight:600; color:var(--muted); }
       .dates { color:var(--muted); }
@@ -88,41 +93,51 @@
     <main>
       <div class="page-title">
         <h1>Education</h1>
-        <div class="page-sub">Summary of academic background, distinctions, certificates, and high school.</div>
+        <div class="page-sub">  </div>
       </div>
 
       <section class="edu-grid">
         <!-- Current university & major (consolidated) -->
           <article class="edu-box">
             <div class="edu-head">
-              <div>
-                <div class="inst">Georgia Institute of Technology</div>
-                <div class="degree">B.S. in Electrical Engineering — Major: Electrical Engineering</div>
+              <div class="school-block">
+                <div class="logo">
+                  <img src="assets/education_logos/gt_logo.png" alt="Georgia Institute of Technology logo">
+                </div>
+                <div>
+                  <div class="inst">Georgia Institute of Technology</div>
+                  <div class="degree">B.S. in Electrical Engineering</div>
+                </div>
               </div>
               <div class="dates">Expected Graduation: May 2028</div>
             </div>
             <p class="edu-desc">Currently pursuing coursework in sensing, signal processing, and robotics. Active in research with the Inan Research Lab on non-invasive wearable devices.</p>
             <ul class="edu-list">
-              <li><strong>Minors & Certificates:</strong> Minor in Law, Science and Technology. Pursuing a Pre-Law certificate</li>
+              <li><strong>Minors & Certificates:</strong> Minor in Law, Science and Technology. Looking to pursue the Signal & Information Processing and Bioengineering threads. Pursuing a Pre-Law certificate. </li>
               <li><strong>Distinctions & Scholarships:</strong> Stamps President's Scholars Program; Ron Brown Captain</li>
               <li><strong>GPA:</strong> 4.0</li>
             </ul>
           </article>
 
         <!-- High school -->
-        <article class="edu-box">
+          <article class="edu-box">
           <div class="edu-head">
-            <div>
-              <div class="inst">International School of Lausanne</div>
-              <div class="degree">Grades & Classes</div>
+            <div class="school-block">
+              <div class="logo">
+                <img src="assets/education_logos/isl_logo.jpg" alt="International School of Lausanne logo">
+              </div>
+              <div>
+                <div class="inst">International School of Lausanne</div>
+                <div class="degree">Bilingual IB Diploma</div>
+              </div>
             </div>
             <div class="dates">Graduated: May 2025</div>
           </div>
-          <p class="edu-desc">Attended the International School of Lausanne. Took advanced coursework through the International Baccalaureate (IB) Bilingual Diploma Programme.</p>
+          <p class="edu-desc">Attended the International School of Lausanne. Took advanced coursework through the International Baccalaureate (IB) Diploma Programme.</p>
           <ul class="edu-list">
-            <li>Final Grade: 43 / 45</li>
             <li>Higher-Level classes: Mathematics Analysis and Approches; Physics; Computer Science</li>
             <li>IB Bilingual Diploma — language(s): English, French</li>
+            <li>Final Grade: 43 / 45</li>
           </ul>
         </article>
 
