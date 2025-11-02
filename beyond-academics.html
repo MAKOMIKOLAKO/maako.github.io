@@ -22,15 +22,17 @@
         scroll-behavior: smooth;
         scroll-snap-type: y mandatory;
         overflow-y: scroll;
+        overflow-x: hidden;
       }
       body { 
-        min-height: 100%;
+        min-height: 100vh;
         background:var(--bg);
         color:var(--text);
         font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
         -webkit-font-smoothing:antialiased;
         -moz-osx-font-smoothing:grayscale;
         overflow-x: hidden;
+        position: relative;
       }
 
       /* Matching navbar */
@@ -59,73 +61,107 @@
       .nav-links a:hover { color: rgba(255,255,255,0.95); }
 
       main {
-        max-width: 1200px;
-        margin: calc(var(--nav-height) + 2rem) auto;
-        padding: 2rem 4%;
-        min-height: 100vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
       }
 
-      /* Keep the page title in normal flow so headings align consistently across pages */
+      /* Page title as full-screen intro section */
       .page-title {
-        margin: 1rem 0 2rem;
-        padding: 0 0;
-        background: transparent;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        z-index: 100;
+        background: var(--bg);
         opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+        pointer-events: none;
       }
       .page-title.hidden {
         opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
+        visibility: hidden;
       }
-      .page-title h1 { font-size: 2rem; color: var(--text); }
-      .page-sub { color: var(--muted); margin-top: 0.45rem; }
+      .page-title h1 { 
+        font-size: 3.5rem; 
+        color: var(--text); 
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      .page-sub { 
+        color: var(--muted); 
+        font-size: 1.2rem;
+        max-width: 600px;
+      }
 
       /* Hobby/Activity Cards */
       .hobbies-grid { 
         position: relative;
+        width: 100%;
+        padding-top: 100vh; /* Space for full-screen title */
       }
 
       .hobby-card {
         min-height: 100vh;
+        width: 100%;
         scroll-snap-align: start;
         scroll-snap-stop: always;
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.03);
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 0.6s ease-out forwards;
+        transition: opacity 0.8s ease-in-out;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .hobby-card.active {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      .hobby-card.inactive {
+        opacity: 0;
+        z-index: 0;
       }
 
       .hobby-content {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        padding: 4rem 4% 2rem;
+        gap: 3rem;
+        padding: 6rem 6%;
         max-width: 1400px;
         margin: 0 auto;
+        width: 100%;
         min-height: 100vh;
         align-items: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-in-out 0.2s, transform 0.6s ease-in-out 0.2s;
+      }
+
+      .hobby-card.active .hobby-content {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .hobby-text {
         opacity: 0;
-        transform: translateX(-20px);
-        animation: slideIn 0.8s ease-out 0.3s forwards;
+        transform: translateX(-30px);
+        transition: opacity 0.6s ease-in-out 0.3s, transform 0.6s ease-in-out 0.3s;
+      }
+
+      .hobby-card.active .hobby-text {
+        opacity: 1;
+        transform: translateX(0);
       }
 
       .hobby-text h2 {
@@ -147,19 +183,13 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         opacity: 0;
-        transform: translateX(20px);
-        animation: slideIn 0.8s ease-out 0.5s forwards;
+        transform: translateX(30px);
+        transition: opacity 0.6s ease-in-out 0.4s, transform 0.6s ease-in-out 0.4s;
       }
 
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(var(--slide-distance, 20px));
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      .hobby-card.active .hobby-gallery {
+        opacity: 1;
+        transform: translateX(0);
       }
 
       .image-placeholder {
@@ -197,28 +227,37 @@
         .hobby-content {
           grid-template-columns: 1fr;
           gap: 2rem;
-          padding-top: 4rem;
+          padding: 4rem 5%;
         }
         .hobby-text h2 {
           font-size: 2rem;
         }
         .hobby-text {
-          --slide-distance: -20px;
+          transform: translateY(30px);
+        }
+        .hobby-card.active .hobby-text {
+          transform: translateY(0);
         }
         .hobby-gallery {
-          --slide-distance: 20px;
+          transform: translateY(30px);
+        }
+        .hobby-card.active .hobby-gallery {
+          transform: translateY(0);
         }
       }
 
       @media (max-width: 768px) {
         .hobby-content {
-          padding-top: 2rem;
+          padding: 3rem 4%;
         }
         .hobby-gallery {
           grid-template-columns: 1fr;
         }
         .page-title h1 { 
-          font-size: 1.6rem; 
+          font-size: 2rem; 
+        }
+        .page-sub {
+          font-size: 1rem;
         }
         .hobby-text h2 {
           font-size: 1.8rem;
@@ -308,29 +347,74 @@
     </main>
 
     <script>
-      // Handle page title visibility on scroll
+      // Handle immersive fade transitions between sections
       const pageTitle = document.querySelector('.page-title');
-      let lastScrollY = window.scrollY;
+      const hobbyCards = document.querySelectorAll('.hobby-card');
       let ticking = false;
 
-      function updatePageTitle() {
-        // Show title when at the top, hide when scrolling down
-        if (window.scrollY > 100) {
+      function updateActiveSection() {
+        const viewportHeight = window.innerHeight;
+        const scrollPosition = window.scrollY;
+
+        // Hide page title after scrolling past first viewport
+        if (scrollPosition > viewportHeight * 0.3) {
           pageTitle.classList.add('hidden');
         } else {
           pageTitle.classList.remove('hidden');
         }
+
+        // Determine which section should be active based on scroll position
+        hobbyCards.forEach((card, index) => {
+          const cardTop = card.offsetTop;
+          const cardCenter = cardTop + viewportHeight / 2;
+          const viewportCenter = scrollPosition + viewportHeight / 2;
+
+          // Calculate distance from viewport center to card center
+          const distance = Math.abs(viewportCenter - cardCenter);
+          const fadeThreshold = viewportHeight * 0.8;
+
+          // Active section is the one closest to viewport center within threshold
+          if (distance < fadeThreshold) {
+            // Smooth opacity based on distance - fade in/out gradually
+            const opacity = Math.max(0, 1 - (distance / fadeThreshold));
+            card.style.opacity = opacity;
+            card.classList.add('active');
+            card.classList.remove('inactive');
+          } else {
+            // Completely fade out sections far from viewport
+            card.style.opacity = 0;
+            card.classList.add('inactive');
+            card.classList.remove('active');
+          }
+        });
+
         ticking = false;
       }
 
+      // Initialize on load
+      window.addEventListener('load', () => {
+        // Set first card as active initially if scrolled past title
+        if (window.scrollY > window.innerHeight * 0.3) {
+          pageTitle.classList.add('hidden');
+          if (hobbyCards.length > 0) {
+            hobbyCards[0].classList.add('active');
+          }
+        }
+        updateActiveSection();
+      });
+
       window.addEventListener('scroll', () => {
-        lastScrollY = window.scrollY;
         if (!ticking) {
           window.requestAnimationFrame(() => {
-            updatePageTitle();
+            updateActiveSection();
           });
           ticking = true;
         }
+      }, { passive: true });
+
+      // Handle resize to recalculate
+      window.addEventListener('resize', () => {
+        updateActiveSection();
       }, { passive: true });
     </script>
   </body>
