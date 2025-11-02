@@ -18,11 +18,77 @@
       *{box-sizing:border-box;margin:0;padding:0}
       html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;}
 
-      nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.04);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:0.75rem 1rem;z-index:1000;border-bottom:2px solid var(--accent);}
-      .nav-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:1rem}
-      .brand{color:var(--accent);text-decoration:none;font-weight:700;letter-spacing:0.3px;font-size:1.1rem}
-      .nav-links{display:flex;gap:2rem;list-style:none;margin:0;padding:0;justify-self:center}
-      .nav-links a{color:var(--text);text-decoration:none;padding:0.5rem 1rem;font-weight:500}
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 0.75rem 1rem;
+        z-index: 1000;
+        border-bottom: 2px solid var(--accent);
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      nav.hide { transform: translateY(-100%); }
+
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .brand {
+        position: relative;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        font-size: 1.2rem;
+        padding-left: 0.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-self: center;
+      }
+
+      .nav-links a {
+        font-family: 'DM Sans', inherit;
+        color: var(--text);
+        text-decoration: none;
+        text-transform: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 1.2px;
+        padding: 0.5rem 1rem;
+        position: relative;
+        transition: color 0.18s ease;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after { width: 100%; }
+      .nav-links a:hover { color: rgba(255,255,255,0.95); }
 
       main{max-width:1200px;margin:calc(var(--nav-height) + 2rem) auto;padding:2rem 4%}
       .page-title{margin:1rem 0 2rem}
@@ -49,8 +115,6 @@
       <div class="nav-inner">
         <a class="brand" href="index.html#top">maako fangajei</a>
         <ul class="nav-links">
-          <li><a href="about-me.html">about me</a></li>
-          <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
           <li><a href="education.html">education</a></li>
           <li><a href="leadership.html">leadership</a></li>

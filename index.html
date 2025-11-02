@@ -27,14 +27,11 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Navigation Styles */
       nav {
         position: fixed;
         top: 0;
         width: 100%;
-        /* lighter translucent background while keeping dark theme */
         background: rgba(255, 255, 255, 0.04);
-        /* subtle blur to create depth */
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         padding: 0.75rem 1rem;
@@ -53,21 +50,19 @@
         margin: 0 auto;
         position: relative;
         display: grid;
-        grid-template-columns: auto 1fr; /* brand | remaining space */
+        grid-template-columns: auto 1fr;
         align-items: center;
         gap: 1rem;
       }
 
       .brand {
-        /* placed in the first grid column */
         position: relative;
         color: var(--accent);
         text-decoration: none;
-        font-weight: 700; /* bolder */
+        font-weight: 700;
         letter-spacing: 0.3px;
-        font-size: 1.2rem; /* larger */
-        padding-left: 0.5rem; /* slight offset from the edge */
-        transition: opacity 0.15s ease, transform 0.15s ease;
+        font-size: 1.2rem;
+        padding-left: 0.5rem;
       }
 
       .nav-links {
@@ -76,17 +71,17 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        justify-self: center; /* center in the remaining space between brand and right edge */
+        justify-self: center;
       }
 
       .nav-links a {
         font-family: 'DM Sans', inherit;
         color: var(--text);
         text-decoration: none;
-        text-transform: none; /* remove uppercase */
+        text-transform: none;
         font-size: 0.9rem;
-        font-weight: 500; /* slightly less bold than the brand */
-        letter-spacing: 1.2px; /* increased spacing */
+        font-weight: 500;
+        letter-spacing: 1.2px;
         padding: 0.5rem 1rem;
         position: relative;
         transition: color 0.18s ease;
@@ -204,8 +199,6 @@
       <div class="nav-inner">
         <a class="brand" href="/#top">maako fangajei</a>
         <ul class="nav-links">
-          <li><a href="about-me.html">about me</a></li>
-          <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
           <li><a href="education.html">education</a></li>
           <li><a href="leadership.html">leadership</a></li>
