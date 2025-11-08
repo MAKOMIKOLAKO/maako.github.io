@@ -164,6 +164,20 @@
         color: var(--text);
       }
 
+      /* small inline links next to the main name */
+      .inline-links {
+        font-size: 0.95rem;
+        color: rgba(235,234,228,0.8);
+        margin-left: 0.6rem;
+        vertical-align: middle;
+      }
+
+      .inline-links a {
+        color: var(--accent);
+        text-decoration: none;
+        margin: 0 0.25rem;
+      }
+
       h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -207,6 +221,8 @@
       <div class="nav-inner">
         <a class="brand" href="/#top">maako fangajei</a>
         <ul class="nav-links">
+          <li><a href="about-me.html">about me</a></li>
+          <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
           <li><a href="education.html">education</a></li>
           <li><a href="leadership.html">leadership</a></li>
@@ -218,12 +234,12 @@
     <main>
       <section class="section">
         <div class="content">
-          <h1>maako fangajei</h1>
+          <h1>maako fangajei <span class="inline-links">[<a href="assets/Maako_Fangajei_Resume.pdf" target="_blank" rel="noopener">resume</a>] [<a href="https://www.linkedin.com/in/mfangajei" target="_blank" rel="noopener">linkedin</a>]</span></h1>
           <h2>about me</h2>
           <p>I'm Maako Fangajei, an electrical engineering student at Georgia Tech with interests spanning sensing, signal processing, and robotics—especially where technology meets human impact. My work and studies explore how engineering can inform public policy and law, from biomedical innovation to equitable tech regulation. I'm also drawn to interdisciplinary problem-solving, whether it's designing circuits, building with my team in the makerspace, or dominating the football field. Growing up between the U.S., Switzerland, and Ghana has shaped how I think about community and responsibility—values I carry into everything I build and pursue.</p>
         </div>
         <div class="image-container">
-          <img src="assets/buzz_headshot.jpg" alt="Maako Fangajei headshot" loading="lazy">
+          <img src="assets/homepage_images/buzz_headshot.jpg" alt="Maako Fangajei headshot" loading="lazy">
         </div>
       </section>
 
@@ -234,7 +250,7 @@
 </p>
         </div>
         <div class="image-container">
-          <img src="assets/alaska.jpg" alt="Alaska landscape" loading="lazy">
+          <img src="assets/homepage_images/alaska.jpg" alt="Alaska landscape" loading="lazy">
         </div>
       </section>
 
@@ -246,7 +262,7 @@
 </p>
         </div>
         <div class="image-container">
-          <img src="assets/alaska2.jpg" alt="Another beautiful Alaska scene" loading="lazy">
+          <img src="assets/homepage_images/alaska2.jpg" alt="Another beautiful Alaska scene" loading="lazy">
         </div>
       </section>
     </main>

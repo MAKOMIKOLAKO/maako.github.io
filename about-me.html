@@ -257,6 +257,16 @@
       .year-indicator.top { top: 2rem; }
       .year-indicator.bottom { bottom: 2rem; }
 
+      /* Make the Future section text span both columns so it fills horizontal space */
+      .timeline-section#future .timeline-text {
+        grid-column: 1 / -1;
+      }
+
+      /* hide the end dot under the Future section */
+      .timeline-section#future .timeline-dot {
+        display: none;
+      }
+
       /* Responsive Design */
       @media (max-width: 1024px) {
         .timeline-content {
@@ -305,8 +315,10 @@
   <body>
     <nav>
       <div class="nav-inner">
-        <a class="brand" href="/#top">maako fangajei</a>
+  <a class="brand" href="index.html#top">maako fangajei</a>
         <ul class="nav-links">
+          <li><a href="about-me.html">about me</a></li>
+          <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
           <li><a href="education.html">education</a></li>
           <li><a href="leadership.html">leadership</a></li>
@@ -331,10 +343,10 @@
             <p>I grew up loving sports! I played football, basketball, and tennis growing and was always a competitive student and athlete. </p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image"><img src="/assets/about_me/baby1.jpg" alt="Early Life 1"></div>
-            <div class="timeline-image"><img src="/assets/about_me/baby2.jpg" alt="Early Life 2"></div>
-            <div class="timeline-image"><img src="/assets/about_me/baby3.jpg" alt="Early Life 3"></div>
-            <div class="timeline-image"><img src="/assets/about_me/baby4.jpg" alt="Early Life 4"></div>
+            <div class="timeline-image"><img src="assets/about_me/baby1.jpg" alt="Early Life 1"></div>
+            <div class="timeline-image"><img src="assets/about_me/baby2.jpg" alt="Early Life 2"></div>
+            <div class="timeline-image"><img src="assets/about_me/baby3.jpg" alt="Early Life 3"></div>
+            <div class="timeline-image"><img src="assets/about_me/baby4.jpg" alt="Early Life 4"></div>
           </div> 
         </div>
       </section>
@@ -345,14 +357,14 @@
         <div class="timeline-content">
           <div class="timeline-text">
             <h2>Transition</h2>
-            <p>[Describe a pivotal transition period. What changed? What challenges did you overcome?]</p>
-            <p>[Highlight decisions, moves, or moments that bridged your early life and high school.]</p>
+            <p>I moved to Switzerland in 2017, leaving everything behind in the US. I learned French (!), started skiing (and eventually, snowboarding); but more importantly, opened my eyes to a new-ish way of life and culture.</p>
+            <p></p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image"><img src="/assets/about_me/mid1.jpg" alt="Transition 1"></div>
-            <div class="timeline-image"><img src="/assets/about_me/mid2.jpg" alt="Transition 2"></div>
-            <div class="timeline-image"><img src="/assets/about_me/mid3.jpg" alt="Transition 3"></div>
-            <div class="timeline-image"><img src="/assets/about_me/mid4.jpg" alt="Transition 4"></div>
+            <div class="timeline-image"><img src="assets/about_me/mid1.jpg" alt="Transition 1"></div>
+            <div class="timeline-image"><img src="assets/about_me/mid2.jpg" alt="Transition 2"></div>
+            <div class="timeline-image"><img src="assets/about_me/mid3.jpg" alt="Transition 3"></div>
+            <div class="timeline-image"><img src="assets/about_me/mid4.jpg" alt="Transition 4"></div>
           </div>
         </div>
       </section>
@@ -363,14 +375,14 @@
         <div class="timeline-content">
           <div class="timeline-text">
             <h2>High School</h2>
-            <p>[Share your high school experiences. What subjects or clubs defined you? Any notable achievements?]</p>
-            <p>[Mention mentors, friends, and key moments that shaped your path.]</p>
+            <p>In high school, I was mainly involved in Football with FRM; VEX Robotics, and Football for All (student service group!). Throughout high school, I a) developed a better understanding of what technical areas were most of interest to me within Computer Science & Engineering, and b) deepened my understanding and analysis of social issues I was noticing through my travels across Europe and Ghana. </p>
+            <p>High school was the positive experience I remember it to be mainly because of the amazing people I met throughout my time there. There are far too many people to thank for helping me achieve my academic and personal goals, and for serving as my mentors, confidants, and closest friends through the trenches of the IB Diploma Programme.</p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image"><img src="/assets/about_me/high1.jpg" alt="High School 1"></div>
-            <div class="timeline-image"><img src="/assets/about_me/high2.jpg" alt="High School 2"></div>
-            <div class="timeline-image"><img src="/assets/about_me/high3.jpg" alt="High School 3"></div>
-            <div class="timeline-image"><img class="object-top" src="/assets/about_me/high4.jpg" alt="High School 4"></div>
+            <div class="timeline-image"><img src="assets/about_me/high1.jpg" alt="High School 1"></div>
+            <div class="timeline-image"><img src="assets/about_me/high2.jpg" alt="High School 2"></div>
+            <div class="timeline-image"><img src="assets/about_me/high3.jpg" alt="High School 3"></div>
+            <div class="timeline-image"><img class="object-top" src="assets/about_me/high4.jpg" alt="High School 4"></div>
           </div>
         </div>
       </section>
@@ -381,13 +393,13 @@
         <div class="timeline-content">
           <div class="timeline-text">
             <h2>Now</h2>
-            <p>[Talk about where you are now. What are you passionate about? What are your current goals and aspirations?]</p>
-            <p>[Share your current interests, projects, or what excites you about the future.]</p>
+            <p>I am now a first-year Electrical Engineering undergraduate student at Georgia Tech, looking to pursue a minor in Law, Science, and Technology. I was fortunate enough to be named a Stamps Presidents Scholar and am attending Tech with the benefits of mentorship, programmatic engagement, academic enrichment opportunities, and merit-based financial support. </p>
+            <p>At the moment, I'm involved as an undergraduate research assistant in the Inan Research Lab; a policy analyst in the student-led Science & Technology Policy Connections; and am set to start as a Peer Instructor in The Hive Makerspace (otherwise known as the interdisciplinary design commons)!</p>
           </div>
           <div class="timeline-media">
-            <div class="timeline-image"><img src="/assets/about_me/now1.JPG" alt="Now 1"></div>
-            <div class="timeline-image"><img src="/assets/about_me/now2.JPG" alt="Now 2"></div>
-            <div class="timeline-image"><img src="/assets/about_me/now3.JPG" alt="Now 3"></div>
+            <div class="timeline-image"><img src="assets/about_me/now1.JPG" alt="Now 1"></div>
+            <div class="timeline-image"><img src="assets/about_me/now2.JPG" alt="Now 2"></div>
+            <div class="timeline-image"><img src="assets/about_me/now3.JPG" alt="Now 3"></div>
             <div class="timeline-image"><img src="https://placehold.co/800x600?text=Now+4" alt="Now 4"></div>
           </div>
         </div>
@@ -399,14 +411,9 @@
         <div class="timeline-content">
           <div class="timeline-text">
             <h2>Future</h2>
-            <p>[Share your vision for the future. What do you want to achieve? What impact do you want to make?]</p>
-            <p>[Describe your dreams, ambitions, and the mark you hope to leave on the world.]</p>
-          </div>
-          <div class="timeline-media">
-            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+1" alt="Future 1"></div>
-            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+2" alt="Future 2"></div>
-            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+3" alt="Future 3"></div>
-            <div class="timeline-image"><img src="https://placehold.co/800x600?text=Future+4" alt="Future 4"></div>
+            <p>In the future, I am looking to deepen my involvement in academic research on campus; I am particularly interested in the applications of signal processing and artificial intelligence within the context of medical devices and patient monitoring. I am also excited to explore classes within the school of Public Policy, and explore the intersection of policy and innovation.</p>
+            <p>I look to work towards a world where scientific and technological innovation is accessible to all, regardless of socioeconomic status, class, geographical location, or otherwise. I believe in the power of policy and hope to simultaneously create new knowledge through academic research, and ensure the outcomes of said research are attainable to all, through policy.</p>
+            <p>My primary goal at Tech is to meet and get to know as many people as possible; build and strengthen existing relationships with those I have already met; and take this opportunity to listen to as many voices as possible in order to enrich the lens through which I view the world.</p>
           </div>
         </div>
       </section>
@@ -424,10 +431,36 @@
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight - windowHeight;
         const scrolled = window.scrollY;
-        const progress = (scrolled / documentHeight) * 100;
-        
-        // Update timeline progress
-        timeline.style.transform = `translateX(-50%) scaleY(${progress}%)`;
+
+        // Determine where the "future" section starts (document coord)
+        const futureSection = document.getElementById('future');
+        const futureTopDoc = futureSection ? futureSection.offsetTop : document.documentElement.scrollHeight;
+        const navHeightPx = navbar ? navbar.offsetHeight : 0;
+
+        // Calculate the maximum length of the timeline (from nav bottom to top of future section)
+        const timelineMaxLength = Math.max(1, futureTopDoc - navHeightPx);
+
+        // Compute a capped progress value so the timeline ends at the future section
+        let cappedProgress = scrolled / timelineMaxLength;
+        cappedProgress = Math.max(0, Math.min(1, cappedProgress));
+
+        // Update timeline progress (scaleY expects a factor, so use cappedProgress)
+        timeline.style.transform = `translateX(-50%) scaleY(${cappedProgress})`;
+
+        // Shorten the visible vertical line when the future section comes into view so the line "ends" at that point
+        if (futureSection) {
+          const futureRect = futureSection.getBoundingClientRect();
+          // If the future top is within or above the viewport, compute bottom offset so the fixed line stops at that y
+          if (futureRect.top <= windowHeight) {
+            const bottomPx = Math.max(0, Math.round(windowHeight - futureRect.top));
+            document.querySelector('.timeline-line').style.bottom = `${bottomPx}px`;
+            document.querySelector('.timeline-progress').style.bottom = `${bottomPx}px`;
+          } else {
+            // otherwise let the line run to the bottom of the viewport
+            document.querySelector('.timeline-line').style.bottom = `0px`;
+            document.querySelector('.timeline-progress').style.bottom = `0px`;
+          }
+        }
 
         // Update active sections
         sections.forEach(section => {

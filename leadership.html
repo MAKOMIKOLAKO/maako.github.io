@@ -149,10 +149,8 @@
       }
 
       .leadership-content {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 2rem;
-        align-items: start;
+        display: block;
+        width: 100%;
       }
 
       .leadership-text p {
@@ -224,6 +222,8 @@
       <div class="nav-inner">
         <a class="brand" href="index.html#top">maako fangajei</a>
         <ul class="nav-links">
+          <li><a href="about-me.html">about me</a></li>
+          <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
           <li><a href="education.html">education</a></li>
           <li><a href="leadership.html">leadership</a></li>
@@ -234,7 +234,7 @@
 
     <main>
       <div class="page-title">
-        <h1>Leadership</h1>
+  <h1>Leadership</h1>
         <div class="page-sub"></div>
       </div>
 
@@ -257,14 +257,9 @@
                 <li>Co-authored and maintained a 100+ page engineering notebook documenting design rationale and product testing./li>
                 <li>Expanded team presence through social media management and STEM outreach programs in the local community.</li>
               </ul>
-              <p>This was one of the most formative experiences of my time in high school. It introduced me to engineering and robotics, but more importantly, connected me with dozens of amazing, driven, talented students who I got to know across that three year period. I also got to know and get closer to our coach and mentor, Mr. Turland, who made it all possible and was always there for us be it as a teacher, mentor, or even just as an emotional support and mediator.</p>
+              <!--<p>This was one of the most formative experiences of my time in high school. It introduced me to engineering and robotics, but more importantly, connected me with dozens of amazing, driven, talented students who I got to know across that three year period. I also got to know and get closer to our coach and mentor, Mr. Turland, who made it all possible and was always there for us be it as a teacher, mentor, or even just as an emotional support and mediator.</p>-->
             </div>
-            <div class="leadership-media">
-              <div class="leadership-image">
-                <!-- Replace with actual image when ready -->
-                <img src="/assets/vex_2.jpg" alt="Leadership role visual" loading="lazy">
-              </div>
-            </div>
+            <!-- leadership-media removed, only text remains -->
           </div>
         </article>
 
@@ -287,17 +282,51 @@
               </ul>
               <p></p>
             </div>
-            <div class="leadership-media">
-              <div class="leadership-image">
-                <!-- Replace with actual image when ready -->
-                <img src="#" alt="Leadership achievement visual" loading="lazy">
-              </div>
-            </div>
+            <!-- leadership-media removed, only text remains -->
           </div>
         </article>
 
         <!-- Add more leadership-box articles as needed -->
 
+      </section>
+
+      <!-- Involvements: non-leadership roles, memberships, and other activities -->
+      <div class="page-title" style="margin-top:2.5rem">
+        <h1>Involvements</h1>
+        <div class="page-sub">Memberships, roles, and activities that contributed to my experience but were not formal leadership positions.</div>
+      </div>
+
+      <section class="leadership-grid" id="involvements">
+        <!-- Example involvement entry (move non-leadership items here) -->
+        <article class="leadership-box">
+          <div class="leadership-head">
+            <div>
+              <div class="role">Peer Instructor</div>
+              <div class="org">The Hive Makerspace</div>
+              <div class="duration">From January 2026</div>
+            </div>
+          </div>
+          <div class="leadership-content">
+            <div class="leadership-text">
+              <p></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="leadership-box">
+          <div class="leadership-head">
+            <div>
+              <div class="role">Policy Analyst</div>
+              <div class="org">Science & Technology Policy Connections</div>
+              <div class="duration">September 2025 - Present</div>
+            </div>
+          </div>
+          <div class="leadership-content">
+            <div class="leadership-text">
+              <p>Contribute to policy analysis and discussions focused on technology and public policy. Participate in research workshops and collaborative writing projects.</p>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
 
