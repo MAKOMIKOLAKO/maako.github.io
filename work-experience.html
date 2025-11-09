@@ -279,5 +279,12 @@
       </section>
     </main>
 
+    <script>
+      // Mobile hamburger toggle for work-experience page
+      const weToggle = document.querySelector('.nav-toggle');
+      weToggle && weToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+    </script>
+
   </body>
 </html>

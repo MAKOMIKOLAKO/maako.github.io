@@ -22,6 +22,7 @@
         --text: #EBEAE4;
         --muted: rgba(235,234,228,0.82);
         --nav-height: 60px;
+        --nav-total-height: calc(var(--nav-height) + 4rem); /* increased offset to fully clear nav */
       }
 
       * { box-sizing: border-box; margin:0; padding:0; }
@@ -124,32 +125,20 @@
       main {
         width: 100%;
         margin: 0;
-        padding: 0;
-        position: relative;
+        padding-top: calc(var(--nav-height) + 2rem); /* Clear the fixed nav */
       }
 
-      /* Page title as full-screen intro section */
+      /* Page title as regular intro section */
       .page-title {
-        position: fixed;
-        top: 0;
-        left: 0;
         width: 100%;
-        height: 100vh;
+        min-height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 2rem;
-        z-index: 100;
+        padding: 4rem 2rem;
         background: var(--bg);
-        opacity: 1;
-        transition: opacity 0.8s ease, visibility 0.8s ease;
-        pointer-events: none;
-      }
-      .page-title.hidden {
-        opacity: 0;
-        visibility: hidden;
       }
       .page-title h1 { 
         font-size: 3.5rem; 
@@ -165,9 +154,7 @@
 
       /* Hobby/Activity Cards */
       .hobbies-grid { 
-        position: relative;
         width: 100%;
-        padding-top: 100vh; /* Space for full-screen title */
       }
 
       .hobby-card {
@@ -335,6 +322,32 @@
           .nav-links{ display:none }
           body.nav-open .nav-links{ display:flex; flex-direction:column; position:absolute; top:var(--nav-height); left:0; right:0; background:rgba(26,23,15,0.98); padding:0.75rem 1rem 1rem 1rem; gap:0.5rem; z-index:1001 }
           body.nav-open .nav-links a{ display:block; padding:0.6rem 1rem }
+          /* Disable immersive fade/transform transitions on small screens to improve usability and performance */
+          .hobby-card, .hobby-content, .hobby-text, .hobby-gallery, .image-placeholder {
+            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          /* Make the page title no longer a fixed full-screen overlay on small screens
+             so it doesn't cover the content. Also remove the large top padding reserved
+             for the full-screen title so hobby cards appear directly below the title. */
+          .page-title {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            width: auto !important;
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 1.25rem 1rem !important;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 1 !important;
+            background: transparent !important;
+          }
+
+          /* Remove extra spacing reserved for the fixed title so content isn't pushed down */
+          .hobbies-grid { padding-top: 0 !important; }
       }
     </style>
   </head>
@@ -420,78 +433,23 @@
       const baToggle = document.querySelector('.nav-toggle');
       baToggle && baToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
       document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
-    </script>
 
-    <script>
-      // Handle immersive fade transitions between sections
-      const pageTitle = document.querySelector('.page-title');
-      const hobbyCards = document.querySelectorAll('.hobby-card');
-      let ticking = false;
-
-      function updateActiveSection() {
-        const viewportHeight = window.innerHeight;
-        const scrollPosition = window.scrollY;
-
-        // Hide page title after scrolling past first viewport
-        if (scrollPosition > viewportHeight * 0.3) {
-          pageTitle.classList.add('hidden');
-        } else {
-          pageTitle.classList.remove('hidden');
-        }
-
-        // Determine which section should be active based on scroll position
-        hobbyCards.forEach((card, index) => {
-          const cardTop = card.offsetTop;
-          const cardCenter = cardTop + viewportHeight / 2;
-          const viewportCenter = scrollPosition + viewportHeight / 2;
-
-          // Calculate distance from viewport center to card center
-          const distance = Math.abs(viewportCenter - cardCenter);
-          const fadeThreshold = viewportHeight * 0.8;
-
-          // Active section is the one closest to viewport center within threshold
-          if (distance < fadeThreshold) {
-            // Smooth opacity based on distance - fade in/out gradually
-            const opacity = Math.max(0, 1 - (distance / fadeThreshold));
-            card.style.opacity = opacity;
-            card.classList.add('active');
-            card.classList.remove('inactive');
-          } else {
-            // Completely fade out sections far from viewport
-            card.style.opacity = 0;
-            card.classList.add('inactive');
-            card.classList.remove('active');
+      // Simple fade-in animation for hobby cards as they enter viewport
+      const cards = document.querySelectorAll('.hobby-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
           }
         });
-
-        ticking = false;
-      }
-
-      // Initialize on load
-      window.addEventListener('load', () => {
-        // Set first card as active initially if scrolled past title
-        if (window.scrollY > window.innerHeight * 0.3) {
-          pageTitle.classList.add('hidden');
-          if (hobbyCards.length > 0) {
-            hobbyCards[0].classList.add('active');
-          }
-        }
-        updateActiveSection();
+      }, {
+        threshold: 0.1
       });
 
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateActiveSection();
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-
-      // Handle resize to recalculate
-      window.addEventListener('resize', () => {
-        updateActiveSection();
-      }, { passive: true });
+      cards.forEach(card => {
+        card.classList.add('active'); // Start all visible
+        observer.observe(card);
+      });
     </script>
   </body>
 </html>
