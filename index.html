@@ -203,12 +203,22 @@
           width: 100%;
         }
 
+        /* Make nav links compact and horizontally scrollable on small screens */
         .nav-links {
-          gap: 1rem;
+          gap: 0.8rem;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          white-space: nowrap;
+          padding-bottom: 0.25rem;
+          justify-self: end;
         }
 
+        .nav-links li { flex: 0 0 auto; }
+
+        .nav-links::-webkit-scrollbar { display: none; }
+
         .nav-links a {
-          font-size: 0.8rem;
+          font-size: 0.85rem;
           padding: 0.3rem 0.6rem;
           font-weight: 500;
           letter-spacing: 1.0px; /* maintain slightly increased spacing on mobile */

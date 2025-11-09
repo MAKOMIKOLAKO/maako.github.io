@@ -309,6 +309,20 @@
         .timeline-media {
           grid-template-columns: 1fr;
         }
+
+        /* Mobile nav: make menu scrollable instead of wrapping */
+        .nav-links {
+          gap: 0.8rem;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          white-space: nowrap;
+          padding-bottom: 0.25rem;
+          justify-self: end;
+        }
+
+        .nav-links li { flex: 0 0 auto; }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-links a { font-size: 0.95rem; padding: 0.3rem 0.6rem; }
       }
     </style>
   </head>
