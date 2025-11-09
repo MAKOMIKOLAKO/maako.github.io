@@ -55,6 +55,11 @@
         gap: 1rem;
       }
 
+      .nav-toggle{display:none;background:transparent;border:0;width:40px;height:40px;padding:6px;cursor:pointer}
+      .nav-toggle .bar{display:block;width:100%;height:2px;background:var(--text);position:relative}
+      .nav-toggle .bar::before,.nav-toggle .bar::after{content:'';position:absolute;left:0;width:100%;height:2px;background:var(--text)}
+      .nav-toggle .bar::before{top:-8px}.nav-toggle .bar::after{top:8px}
+
       .brand {
         position: relative;
         color: var(--accent);
@@ -129,18 +134,20 @@
         .edu-head { flex-direction:column; align-items:flex-start; gap:0.35rem; }
         .page-title h1 { font-size:1.6rem; }
 
-        /* mobile nav improvements */
-        .nav-links{ overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; padding-bottom:0.25rem }
-        .nav-links li{ flex:0 0 auto }
-        .nav-links::-webkit-scrollbar{ display:none }
+        /* mobile hamburger menu */
+        .nav-toggle{ display:block }
+        .nav-links{ display:none }
+        body.nav-open .nav-links{ display:flex; flex-direction:column; position:absolute; top:var(--nav-height); left:0; right:0; background:rgba(26,23,15,0.98); padding:0.75rem 1rem 1rem 1rem; gap:0.5rem; z-index:1001 }
+        body.nav-open .nav-links a{ display:block; padding:0.6rem 1rem }
       }
     </style>
   </head>
   <body id="top">
     <nav>
       <div class="nav-inner">
-        <a class="brand" href="index.html#top">maako fangajei</a>
-        <ul class="nav-links">
+  <a class="brand" href="index.html#top">maako fangajei</a>
+  <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
+  <ul class="nav-links">
           <li><a href="about-me.html">about me</a></li>
           <li><a href="projects.html">projects</a></li>
           <li><a href="work-experience.html">work experience</a></li>
