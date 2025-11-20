@@ -3,6 +3,215 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project — Maako Fangajei</title>
+    <link rel="canonical" href="https://maako.github.io/projects.html">
+    <style>
+      :root{--bg:#1A170F;--accent:#657A3E;--text:#EBEAE4;--muted:rgba(235,234,228,0.82);--nav-height:60px}
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial}
+
+      /* keep page nav injected by assets/nav.js (placeholder below) */
+      main{max-width:900px;margin:calc(var(--nav-height) + 2rem) auto;padding:2rem 4%}
+
+      .post-hero{border-radius:12px;overflow:hidden;margin-bottom:1.25rem}
+      .post-hero img{width:100%;height:450px;object-fit:cover;display:block}
+
+      .post-header{margin-bottom:1rem}
+      .post-title{font-size:2rem;color:var(--text);margin-bottom:0.25rem}
+      .post-meta{color:var(--muted);font-size:0.95rem;margin-bottom:1rem}
+
+      .post-content{color:var(--text);line-height:1.8}
+      .post-content h2{color:var(--accent);margin-top:1.25rem}
+      .post-content p{margin:0.85rem 0}
+
+      /* Implementation details layout */
+      .implementation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+        align-items: center;
+      }
+      
+      .implementation-text {
+        grid-column: 1 / -1;
+      }
+      
+      .implementation-image {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .implementation-caption {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+      
+      /* Code block styling */
+      .code-block {
+        grid-column: 1 / -1;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .code-block pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .project-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:1rem}
+      /* slightly larger gallery images for better visibility */
+      .project-gallery img{width:100%;height:220px;object-fit:cover;border-radius:8px;display:block}
+
+      .back-link{display:inline-block;margin-top:1.25rem;color:var(--accent);text-decoration:none;font-weight:600}
+
+      /* Responsive tweaks */
+      @media (max-width:900px){
+        .post-hero img{height:260px}
+        .project-gallery{grid-template-columns:repeat(2,1fr)}
+        .project-gallery img{height:200px}
+      }
+      @media (max-width:480px){
+        main{padding:1.25rem}
+        .project-gallery{grid-template-columns:1fr}
+        .project-gallery img{height:180px}
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div id="site-nav"></div>
+    <script src="assets/nav.js"></script>
+
+    <main>
+      <article class="post">
+        <header class="post-header">
+          <h1 class="post-title">ECE Discovery Project</h1>
+          <div class="post-meta">November 2025 • Tags: PCB, CAD, Arduino, Embedded</div>
+        </header>
+
+        <section class="post-content">
+          <p>This is the single-project presentation page. Use this space to present the project as a long-form post: motivation, context, design decisions, and outcomes. Below are sections where you can paste detailed write-ups, diagrams, code snippets, and images.</p>
+
+          <h2>Overview</h2>
+          <p>Dorm closets are dark. I wanted to create a small, circular, portable motion-activated light that can be stuck to the inside of a closet door via adhesive strips, and turn on whenver a ToF sensor is activities (i.e. whenever the door is opened).</p>
+
+          <h2>System Architecture</h2>
+          <p>The final product will mainly consist of a ToF sensor, an LED, and a microcontroller. When the ToF sensor’s readings reach a certain threshold, the LED will turn on. The product will be contained in a cylindrical plastic shell.</p>
+
+          <h2>Implementation Details</h2>
+          <div class="implementation">
+            <div class="implementation-text">
+              <p>I started with a simple breadboard prototype using an ultrasonic sensor, switch, and LED. The microcontroller would read the ultrasonic sensor's output and when it exceeded a certain threshold, it would turn on the LED. I eventually chose to switch from an ultrasonic sensor to a TOF sensor because of the smaller footprint. The breadboard prototype also assumes the microcontroller is externally powered, which would not be the case under real use conditions. This prototype allowed me to plan out the logic of the design of the actual device.</p>
+            </div>
+            
+            <!-- Image with caption - Copy and modify this block for each image -->
+            <div class="implementation-image-container">
+              <img src="assets/projects/discovery/projectone.png" alt="Implementation image 1" class="implementation-image" loading="lazy">
+              <div class="implementation-caption">Prototype breadboard design</div>
+            </div>
+            
+            <div class="implementation-image-container">
+              <img src="assets/projects/discovery/projecttwo.png" alt="Implementation image 2" class="implementation-image" loading="lazy">
+              <div class="implementation-caption">Draft schematic for the PCB</div>
+            </div>
+            
+            <!-- Add more implementation text if needed -->
+            <div class="implementation-text">
+              <p>Once I was happy with the breadboard prototype, I wanted to move on to a PCB design. I had no prior experience with PCB design so I used the tutorials available on the HIVE Makerspace YouTube channel to learn the software itself and the design process. I created a rough draft schematic and learned about footprints and the different layers and processes involved in PCB design.</p>
+              
+              <div class="implementation-text">
+                <p>Here's the Arduino code I used for the initial prototype with the ultrasonic sensor. It reads distance measurements and controls the LED based on the detected proximity:</p>
+              </div>
+              
+              <div class="code-block">
+                <pre><code>// 
+int ledPin = A0;
+int uTrig = 6;
+int uEcho = 7;
+
+long duration;
+int distance;
+
+void setup()
+{
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(uTrig, OUTPUT);
+  pinMode(uEcho, INPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+
+  digitalWrite(uTrig, LOW);
+  delayMicroseconds(2);
+
+  // Send a 10 microsecond pulse to trigger the sensor
+  digitalWrite(uTrig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(uTrig, LOW);
+
+  // Read the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(uEcho, HIGH);
+
+  // Calculate the distance
+  distance = duration * 0.0343 / 2;
+
+  // Print the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  delay(100); // Wait a bit before the next reading
+  
+  if (distance == 0){
+  	digitalWrite(ledPin, LOW);
+  } else if (distance <= 100){
+  	digitalWrite(ledPin, HIGH);
+  } else{
+    digitalWrite(ledPin, LOW);
+  }
+}
+</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h2>Next Steps</h2>
+          <p>I'm not yet done with the project. I want to redo the schematic and make the wiring more organized. I would also like to finish creating the footprint for the PCB and hopefully print it soon! Ideally, the PCB is round to match the shape of the device itself. Additionally, I would like to create a custom CAD model and 3D print a case to house the internals.</p>
+
+          <h2>Skills Learned</h2>
+          <p>I learned about Arduino programming; PCB design; CAD modeling; Reading and creating schematics; and finding and interpreting datasheets.</p>
+          <a class="back-link" href="index.html#top">← Back to home</a>
+        </section>
+      </article>
+    </main>
+
+    <script>
+      // Ensure hamburger wiring still works if nav was injected after this script
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector('.nav-toggle');
+        toggle && toggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+      });
+    </script>
+  </body>
+</html>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Projects — Maako Fangajei</title>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5WGX12EC2"></script>
@@ -111,16 +320,18 @@
       .page-title h1{font-size:2rem;color:var(--text)}
       .page-sub{color:var(--muted);margin-top:0.45rem}
 
-      .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
-      .project-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.45);display:flex;flex-direction:column}
-      .project-media{width:100%;aspect-ratio:16/9;background:rgba(101,122,62,0.08);display:flex;align-items:center;justify-content:center;color:var(--muted)}
-      .project-body{padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem}
-      .project-title{color:var(--accent);font-weight:700;font-size:1.1rem}
-      .project-desc{color:var(--text);line-height:1.6;font-size:0.98rem}
-      .project-meta{display:flex;gap:0.5rem;flex-wrap:wrap}
-      .tag{background:rgba(255,255,255,0.03);color:var(--muted);padding:0.3rem 0.6rem;border-radius:999px;font-size:0.85rem}
-      .project-links{margin-left:auto;display:flex;gap:0.5rem}
-      .project-links a{color:var(--accent);text-decoration:none;font-weight:600}
+  /* Layout for long vertical list of projects */
+  .project-section { display:flex; gap:2rem; align-items:flex-start; margin-bottom:2.4rem; background: rgba(255,255,255,0.01); padding:1.2rem; border-radius:12px; border:1px solid rgba(255,255,255,0.03); box-shadow:0 8px 20px rgba(0,0,0,0.35); }
+  .project-media { flex:0 0 45%; background:rgba(101,122,62,0.06); border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+  .project-media img { width:100%; height:100%; object-fit:cover; display:block; }
+  .project-body { flex:1; display:flex; flex-direction:column; gap:0.8rem; padding:0.4rem 0.6rem; }
+  .project-title{ color:var(--accent); font-weight:700; font-size:1.25rem }
+  .project-sub { color: var(--muted); font-size:0.95rem }
+  .project-desc{ color:var(--text); line-height:1.6 }
+  .project-meta{ display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem }
+  .tag{ background:rgba(255,255,255,0.03); color:var(--muted); padding:0.3rem 0.6rem; border-radius:999px; font-size:0.85rem }
+  .project-links{ margin-top:auto; display:flex; gap:0.75rem }
+  .project-links a{ color:var(--accent); text-decoration:none; font-weight:600 }
 
       @media(max-width:900px){
         .projects-grid{grid-template-columns:1fr}
@@ -134,20 +345,8 @@
     </style>
   </head>
   <body id="top">
-    <nav>
-      <div class="nav-inner">
-        <a class="brand" href="index.html#top">maako fangajei</a>
-        <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
-        <ul class="nav-links">
-          <li><a href="about-me.html">about me</a></li>
-          <li><a href="projects.html">projects</a></li>
-          <li><a href="work-experience.html">work experience</a></li>
-          <li><a href="education.html">education</a></li>
-          <li><a href="leadership.html">leadership</a></li>
-          <li><a href="beyond-academics.html">beyond academics</a></li>
-        </ul>
-      </div>
-    </nav>
+    <div id="site-nav"></div>
+    <script src="assets/nav.js"></script>
 
     <main>
       <div class="page-title">
@@ -155,47 +354,59 @@
         <div class="page-sub">A selection of projects, prototypes, and experiments. Click through for details and links.</div>
       </div>
 
-      <section class="projects-grid">
-        <!-- Example Project Card -->
-        <article class="project-card">
-          <div class="project-media">Project Image</div>
-          <div class="project-body">
+      <!-- Long-form projects list: each project is a full section stacked vertically -->
+      <section class="project-section" id="project-name">
+        <div class="project-media"><img src="assets/activity_images/football1.JPG" alt="Project image placeholder" loading="lazy"></div>
+        <div class="project-body">
+          <div>
             <div class="project-title">Project Name</div>
-            <div class="project-desc">Short description of the project — what it does, your role, and the technologies used.</div>
-            <div style="display:flex;align-items:center;gap:1rem">
-              <div class="project-meta">
-                <span class="tag">Python</span>
-                <span class="tag">Embedded</span>
-                <span class="tag">Signal Processing</span>
-              </div>
-              <div class="project-links">
-                <a href="#">Demo</a>
-                <a href="#">Repo</a>
-              </div>
-            </div>
+            <div class="project-sub">Short subtitle or date • Tags: Python, Embedded, Signal Processing</div>
           </div>
-        </article>
-
-        <!-- Duplicate cards for layout demonstration -->
-        <article class="project-card">
-          <div class="project-media">Project Image</div>
-          <div class="project-body">
-            <div class="project-title">Another Project</div>
-            <div class="project-desc">Brief summary of this other project, your contributions, and outcomes.</div>
-            <div style="display:flex;align-items:center;gap:1rem">
-              <div class="project-meta">
-                <span class="tag">C++</span>
-                <span class="tag">Robotics</span>
-              </div>
-              <div class="project-links">
-                <a href="#">Demo</a>
-                <a href="#">Repo</a>
-              </div>
-            </div>
+          <div class="project-desc">Short description of the project — what it does, your role, and the technologies used. This section can include more detail about the architecture and approach.</div>
+          <section class="project-details">
+            <h3 style="color:var(--accent)">Overview</h3>
+            <p style="color:var(--text)">High-level description: what the project does, goals, and impact.</p>
+            <h3 style="color:var(--accent)">Technical Details</h3>
+            <p style="color:var(--text)">Detailed explanation of algorithms, architecture, hardware, software stack, and key challenges.</p>
+          </section>
+          <div class="project-meta">
+            <span class="tag">Python</span>
+            <span class="tag">Embedded</span>
+            <span class="tag">Signal Processing</span>
           </div>
-        </article>
-
+          <div class="project-links">
+            <a href="#">Demo</a>
+            <a href="#">Repo</a>
+          </div>
+        </div>
       </section>
+
+      <section class="project-section" id="another-project">
+        <div class="project-media"><img src="assets/activity_images/ski1.jpg" alt="Another project image" loading="lazy"></div>
+        <div class="project-body">
+          <div>
+            <div class="project-title">Another Project</div>
+            <div class="project-sub">Short subtitle or date • Tags: C++, Robotics</div>
+          </div>
+          <div class="project-desc">Brief summary of this other project, your contributions, and outcomes.</div>
+          <section class="project-details">
+            <h3 style="color:var(--accent)">Overview</h3>
+            <p style="color:var(--text)">High-level description: what the project does, goals, and impact.</p>
+            <h3 style="color:var(--accent)">Technical Details</h3>
+            <p style="color:var(--text)">Detailed explanation of algorithms, control loops, hardware integration, and software.</p>
+          </section>
+          <div class="project-meta">
+            <span class="tag">C++</span>
+            <span class="tag">Robotics</span>
+          </div>
+          <div class="project-links">
+            <a href="#">Demo</a>
+            <a href="#">Repo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add more project-section blocks below as needed -->
     </main>
 
     <script>
