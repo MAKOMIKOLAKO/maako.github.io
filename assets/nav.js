@@ -12,7 +12,6 @@
     <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
     <ul class="nav-links">
       <li><a href="${base}about-me.html">about me</a></li>
-  <li><a href="${base}projects.html">projects</a></li>
       <li><a href="${base}work-experience.html">work experience</a></li>
       <li><a href="${base}education.html">education</a></li>
       <li><a href="${base}leadership.html">leadership</a></li>
